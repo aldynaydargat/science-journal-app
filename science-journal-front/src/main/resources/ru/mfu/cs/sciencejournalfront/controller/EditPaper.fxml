@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<BorderPane prefHeight="600" prefWidth="1000" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.mfu.cs.sciencejournalfront.controller.EditPaperPageController">
+    <top>
+        <HBox alignment="CENTER" spacing="20" style="-fx-background-color: #2c3e50; -fx-padding: 10;">
+            <Label style="-fx-font-size: 24; -fx-font-weight: bold; -fx-text-fill: white;" text="SCIENCE JOURNAL" />
+        </HBox>
+    </top>
+
+    <left>
+        <fx:include source="NavigationPanel.fxml" />
+    </left>
+
+    <!-- Center: Form for Editing Paper -->
+    <center>
+        <VBox spacing="20" style="-fx-padding: 20;">
+            <!-- Form Fields in GridPane -->
+            <GridPane alignment="CENTER" hgap="10" vgap="10">
+                <Label text="Title:" />
+                <TextField fx:id="titleField" GridPane.columnIndex="1" />
+
+                <Label text="Abstract:" GridPane.rowIndex="1" />
+                <TextArea fx:id="abstractField" style="-fx-pref-height: 100;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+                <Label text="Citation Text:" GridPane.rowIndex="2" />
+                <TextArea fx:id="citationField" style="-fx-pref-height: 100;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+                <Label text="Keywords:" GridPane.rowIndex="3" />
+                <TextField fx:id="keywordsField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+
+                <Label text="Authors:" GridPane.rowIndex="4" />
+                <TextField fx:id="authorsField" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+
+                <Label text="PDF File:" GridPane.rowIndex="5" />
+                <HBox GridPane.columnIndex="1" GridPane.rowIndex="5">
+                   <children>
+                       <Label fx:id="pdfFileLabel"
+                              onMouseEntered="#handleMouseEntered"
+                              onMouseExited="#handleMouseExited"
+                              onMouseClicked="#handleMouseClicked"/>
+                       <Button onAction="#chooseFile" text="Choose File">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin></Button>
+                   </children>
+                </HBox>
+            <columnConstraints>
+               <ColumnConstraints />
+               <ColumnConstraints />
+            </columnConstraints>
+            <rowConstraints>
+               <RowConstraints />
+               <RowConstraints />
+               <RowConstraints />
+               <RowConstraints />
+               <RowConstraints />
+               <RowConstraints />
+            </rowConstraints>
+            </GridPane>
+
+            <!-- Submit Button Section (below the form) -->
+            <HBox alignment="CENTER" spacing="15">
+                <Button onAction="#handleEditPaper" text="Submit" />
+            </HBox>
+        </VBox>
+    </center>
+</BorderPane>
